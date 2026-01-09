@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Briefcase, GraduationCap, Award } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Briefcase, GraduationCap, Award, Code } from 'lucide-react';
 
-type TabType = 'experience' | 'education' | 'certifications';
+type TabType = 'experience' | 'education' | 'certifications' | 'skills';
 
 const experiences = [
   {
@@ -76,11 +76,87 @@ const certifications = [
   },
 ];
 
+const skillCategories = [
+  {
+    title: 'Web Development',
+    skills: [
+      { name: 'ASP .NET MVC', level: 100 },
+      { name: 'ASP .NET Core', level: 100 },
+      { name: 'Web API Development', level: 95 },
+      { name: 'Third Party API Integration', level: 90 },
+      { name: 'HTML 5', level: 100 },
+      { name: 'CSS 3', level: 85 },
+      { name: 'Bootstrap', level: 90 },
+      { name: 'Entity Framework', level: 100 },
+      { name: 'Telerik & Kendo UI ASP .NET Core', level: 90 },
+      { name: 'REST API Development', level: 90 },
+      { name: 'WPF C#', level: 85 },
+      { name: 'IIS Web Deployment', level: 100 },
+      { name: 'Azure Web Deployment', level: 100 },
+    ],
+  },
+  {
+    title: 'Mobile App Development',
+    skills: [
+      { name: '.NET MAUI (Multi-platform App UI)', level: 100 },
+      { name: 'Xamarin Forms', level: 95 },
+      { name: 'XAML', level: 80 },
+      { name: 'MVVM Pattern', level: 90 },
+    ],
+  },
+  {
+    title: 'Programming Languages',
+    skills: [
+      { name: 'C#', level: 100 },
+      { name: 'SQL', level: 100 },
+      { name: 'JavaScript', level: 85 },
+      { name: 'TypeScript', level: 80 },
+    ],
+  },
+  {
+    title: 'DevOps & Cloud',
+    skills: [
+      { name: 'Azure DevOps', level: 95 },
+      { name: 'CI/CD Pipelines', level: 90 },
+      { name: 'Git Version Control', level: 100 },
+      { name: 'Microsoft Azure', level: 90 },
+    ],
+  },
+];
+
+const SkillBar = ({ name, level, isVisible }: { name: string; level: number; isVisible: boolean }) => {
+  return (
+    <div className="mb-6">
+      <div className="flex justify-between items-center mb-2">
+        <span className="text-foreground font-medium">{name}</span>
+        <span className="text-primary font-semibold">{level}%</span>
+      </div>
+      <div className="skill-bar">
+        <div
+          className="skill-bar-fill"
+          style={{
+            width: isVisible ? `${level}%` : '0%',
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
 export const ExperienceSection = () => {
   const [activeTab, setActiveTab] = useState<TabType>('experience');
+  const [skillsVisible, setSkillsVisible] = useState(false);
+  const skillsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (activeTab === 'skills') {
+      setSkillsVisible(true);
+    }
+  }, [activeTab]);
 
   const tabs = [
     { id: 'experience' as TabType, label: 'Experience', icon: Briefcase },
+    { id: 'skills' as TabType, label: 'Professional Skills', icon: Code },
     { id: 'education' as TabType, label: 'Education', icon: GraduationCap },
     { id: 'certifications' as TabType, label: 'Certifications', icon: Award },
   ];
@@ -181,6 +257,26 @@ export const ExperienceSection = () => {
                   </h3>
                   <p className="text-primary font-medium mb-3">{cert.year}</p>
                   <p className="text-muted-foreground text-sm">{cert.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === 'skills' && (
+            <div ref={skillsRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {skillCategories.map((category) => (
+                <div key={category.title}>
+                  <h3 className="text-2xl font-semibold text-foreground mb-8 pb-4 border-b border-border">
+                    {category.title}
+                  </h3>
+                  {category.skills.map((skill) => (
+                    <SkillBar
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      isVisible={skillsVisible}
+                    />
+                  ))}
                 </div>
               ))}
             </div>
