@@ -1,7 +1,6 @@
-import { Navigation } from '@/components/Navigation';
+import { Sidebar } from '@/components/Sidebar';
 import { HeroSection } from '@/components/HeroSection';
 import { ServicesSection } from '@/components/ServicesSection';
-import { PortfolioSection } from '@/components/PortfolioSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ContactSection } from '@/components/ContactSection';
@@ -9,16 +8,17 @@ import { Footer } from '@/components/Footer';
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
-      <HeroSection />
-      <ServicesSection />
-      <PortfolioSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <ContactSection />
-      <Footer />
-    </main>
+    <div className="min-h-screen bg-background">
+      <Sidebar />
+      <main className="lg:ml-[280px]">
+        <HeroSection />
+        <ServicesSection />
+        <ExperienceSection />
+        <SkillsSection />
+        <ContactSection />
+        <Footer />
+      </main>
+    </div>
   );
 };
 
