@@ -151,6 +151,14 @@
     @apply text-primary;
   }
 
+  .sidebar-nav-link {
+    @apply text-muted-foreground hover:text-primary transition-colors duration-300 uppercase text-sm tracking-widest font-medium py-2;
+  }
+
+  .sidebar-nav-link-active {
+    @apply text-primary;
+  }
+
   .btn-primary {
     @apply bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium uppercase tracking-wider transition-all duration-300 hover:bg-accent-red-hover hover:shadow-lg hover:shadow-primary/25;
   }
