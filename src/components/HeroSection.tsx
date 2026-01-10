@@ -51,22 +51,29 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-0"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card">
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(50)].map((_, i) => (
+      {/* Animated Background with floating dots */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card overflow-hidden">
+        {[...Array(80)].map((_, i) => {
+          const size = Math.random() * 4 + 2;
+          const left = Math.random() * 100;
+          const initialTop = Math.random() * 100;
+          const duration = 15 + Math.random() * 20;
+          const delay = Math.random() * 10;
+          
+          return (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-primary/50 rounded-full animate-pulse"
+              className="absolute rounded-full bg-muted-foreground/20"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 6}s`,
-                animationDuration: `${6 + Math.random() * 6}s`,
+                width: `${size}px`,
+                height: `${size}px`,
+                left: `${left}%`,
+                top: `${initialTop}%`,
+                animation: `floatUp ${duration}s linear ${delay}s infinite`,
               }}
             />
-          ))}
-        </div>
+          );
+        })}
       </div>
 
       <div className="relative z-10 text-center px-4">
