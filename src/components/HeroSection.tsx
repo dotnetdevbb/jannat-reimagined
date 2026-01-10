@@ -68,73 +68,73 @@ export const HeroSection = () => {
           <Particles
             id="tsparticles"
             options={{
-            fullScreen: false,
-            background: {
-              color: {
-                value: "transparent",
-              },
-            },
-            fpsLimit: 60,
-            interactivity: {
-              events: {
-                onHover: {
-                  enable: true,
-                  mode: "grab",
-                },
-                resize: {
-                  enable: true,
+              fullScreen: false,
+              background: {
+                color: {
+                  value: "transparent",
                 },
               },
-              modes: {
-                grab: {
-                  distance: 150,
-                  links: {
-                    opacity: 0.5,
+              fpsLimit: 120,
+              interactivity: {
+                events: {
+                  onHover: {
+                    enable: true,
+                    mode: "grab",
+                  },
+                  resize: {
+                    enable: true,
+                  },
+                },
+                modes: {
+                  grab: {
+                    distance: 140,
+                    links: {
+                      opacity: 0.6,
+                    },
                   },
                 },
               },
-            },
-            particles: {
-              color: {
-                value: "#ffffff",
-              },
-              links: {
-                color: "#ffffff",
-                distance: 150,
-                enable: true,
-                opacity: 0.3,
-                width: 1,
-              },
-              move: {
-                direction: "none",
-                enable: true,
-                outModes: {
-                  default: "out",
+              particles: {
+                color: {
+                  value: "#ffffff",
                 },
-                random: false,
-                speed: 1,
-                straight: false,
-              },
-              number: {
-                density: {
+                links: {
+                  color: "#ffffff",
+                  distance: 120,
                   enable: true,
-                  width: 800,
-                  height: 800,
+                  opacity: 0.15,
+                  width: 1,
                 },
-                value: 60,
+                move: {
+                  direction: "none",
+                  enable: true,
+                  outModes: {
+                    default: "bounce",
+                  },
+                  random: true,
+                  speed: 0.4,
+                  straight: false,
+                },
+                number: {
+                  density: {
+                    enable: true,
+                    width: 1000,
+                    height: 1000,
+                  },
+                  value: 80,
+                },
+                opacity: {
+                  value: { min: 0.4, max: 0.7 },
+                },
+                shape: {
+                  type: "circle",
+                },
+                size: {
+                  value: { min: 1, max: 2.5 },
+                },
               },
-              opacity: {
-                value: 0.4,
-              },
-              shape: {
-                type: "circle",
-              },
-              size: {
-                value: { min: 1, max: 3 },
-              },
-            },
-            detectRetina: true,
-          }}
+              detectRetina: true,
+            }}
             className="absolute inset-0 w-full h-full"
           />
         )}
