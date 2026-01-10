@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const roles = [
@@ -46,6 +46,18 @@ export const HeroSection = () => {
     }
   };
 
+  // Memoize dots so they don't regenerate on typing re-renders
+  const dots = useMemo(() => {
+    return [...Array(50)].map((_, i) => ({
+      id: i,
+      size: Math.random() * 2.5 + 1,
+      left: Math.random() * 100,
+      top: Math.random() * 120,
+      duration: 40 + Math.random() * 40,
+      delay: Math.random() * 20,
+    }));
+  }, []);
+
   return (
     <section
       id="home"
@@ -53,27 +65,19 @@ export const HeroSection = () => {
     >
       {/* Animated Background with floating dots */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card overflow-hidden">
-        {[...Array(60)].map((_, i) => {
-          const size = Math.random() * 3 + 1.5;
-          const left = Math.random() * 100;
-          const initialTop = Math.random() * 120;
-          const duration = 25 + Math.random() * 30;
-          const delay = Math.random() * 15;
-          
-          return (
-            <div
-              key={i}
-              className="absolute rounded-full bg-muted-foreground/20"
-              style={{
-                width: `${size}px`,
-                height: `${size}px`,
-                left: `${left}%`,
-                top: `${initialTop}%`,
-                animation: `floatUp ${duration}s linear ${delay}s infinite`,
-              }}
-            />
-          );
-        })}
+        {dots.map((dot) => (
+          <div
+            key={dot.id}
+            className="absolute rounded-full bg-muted-foreground/15"
+            style={{
+              width: `${dot.size}px`,
+              height: `${dot.size}px`,
+              left: `${dot.left}%`,
+              top: `${dot.top}%`,
+              animation: `floatUp ${dot.duration}s linear ${dot.delay}s infinite`,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 text-center px-4">
