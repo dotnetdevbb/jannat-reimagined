@@ -79,10 +79,9 @@ export const HeroSection = () => {
         <div
           className="animate-fade-up"
           style={{
-            animationDelay: '0.8s',
-            animationDuration: '0.8s',
-            opacity: 0
-             }}
+            animationDelay: '0.4s',
+            animationFillMode: 'forwards'
+          }}
         >
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-2">
             I am a{' '}
@@ -95,7 +94,7 @@ export const HeroSection = () => {
 
         <div
           className="animate-fade-up mt-10"
-          style={{ animationDelay: '0.6s', opacity: 0 }}
+          style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
           <button onClick={handleContactClick} className="btn-primary">
             CONTACT ME
