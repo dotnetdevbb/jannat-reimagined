@@ -17,7 +17,7 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
+    const typingSpeed = isDeleting ? 25 : 50;
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {
@@ -53,12 +53,12 @@ export const HeroSection = () => {
     >
       {/* Animated Background with floating dots */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card overflow-hidden">
-        {[...Array(80)].map((_, i) => {
-          const size = Math.random() * 4 + 2;
+        {[...Array(60)].map((_, i) => {
+          const size = Math.random() * 3 + 1.5;
           const left = Math.random() * 100;
-          const initialTop = Math.random() * 100;
-          const duration = 15 + Math.random() * 20;
-          const delay = Math.random() * 10;
+          const initialTop = Math.random() * 120;
+          const duration = 25 + Math.random() * 30;
+          const delay = Math.random() * 15;
           
           return (
             <div
