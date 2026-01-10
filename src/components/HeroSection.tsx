@@ -1,5 +1,7 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 
 const roles = [
   'Developer.',
@@ -14,6 +16,15 @@ export const HeroSection = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [particlesReady, setParticlesReady] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesReady(true);
+    });
+  }, []);
 
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
@@ -46,38 +57,87 @@ export const HeroSection = () => {
     }
   };
 
-  // Memoize dots so they don't regenerate on typing re-renders
-  const dots = useMemo(() => {
-    return [...Array(50)].map((_, i) => ({
-      id: i,
-      size: Math.random() * 2.5 + 1,
-      left: Math.random() * 100,
-      top: Math.random() * 120,
-      duration: 40 + Math.random() * 40,
-      delay: Math.random() * 20,
-    }));
-  }, []);
-
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-0"
     >
-      {/* Animated Background with floating dots */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card overflow-hidden">
-        {dots.map((dot) => (
-          <div
-            key={dot.id}
-            className="absolute rounded-full bg-muted-foreground/15"
-            style={{
-              width: `${dot.size}px`,
-              height: `${dot.size}px`,
-              left: `${dot.left}%`,
-              top: `${dot.top}%`,
-              animation: `floatUp ${dot.duration}s linear ${dot.delay}s infinite`,
-            }}
+      {/* Animated Background with particles */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card">
+        {particlesReady && (
+          <Particles
+            id="tsparticles"
+            options={{
+            fullScreen: false,
+            background: {
+              color: {
+                value: "transparent",
+              },
+            },
+            fpsLimit: 60,
+            interactivity: {
+              events: {
+                onHover: {
+                  enable: true,
+                  mode: "grab",
+                },
+                resize: {
+                  enable: true,
+                },
+              },
+              modes: {
+                grab: {
+                  distance: 150,
+                  links: {
+                    opacity: 0.5,
+                  },
+                },
+              },
+            },
+            particles: {
+              color: {
+                value: "#ffffff",
+              },
+              links: {
+                color: "#ffffff",
+                distance: 150,
+                enable: true,
+                opacity: 0.3,
+                width: 1,
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: {
+                  default: "out",
+                },
+                random: false,
+                speed: 1,
+                straight: false,
+              },
+              number: {
+                density: {
+                  enable: true,
+                  width: 800,
+                  height: 800,
+                },
+                value: 60,
+              },
+              opacity: {
+                value: 0.4,
+              },
+              shape: {
+                type: "circle",
+              },
+              size: {
+                value: { min: 1, max: 3 },
+              },
+            },
+            detectRetina: true,
+          }}
+            className="absolute inset-0 w-full h-full"
           />
-        ))}
+        )}
       </div>
 
       <div className="relative z-10 text-center px-4">
