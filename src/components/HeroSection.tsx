@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { ParticlesBackground } from './ParticlesBackground';
+import heroBg from '@/assets/hero-bg.png';
 
 const roles = [
   'Developer.',
@@ -52,8 +53,12 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-0"
     >
-      {/* Particles Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card">
+      {/* Background Image with Particles Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="absolute inset-0 bg-background/80" />
         <ParticlesBackground />
       </div>
 
