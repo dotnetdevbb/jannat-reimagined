@@ -11,7 +11,7 @@ const navItems = [
 const socialLinks = [
   { icon: Facebook, href: 'https://facebook.com/', label: 'Facebook' },
   { icon: Linkedin, href: 'https://linkedin.com/', label: 'LinkedIn' },
-  // { icon: Twitter, href: 'https://twitter.com/', label: 'Twitter' },
+  { icon: Twitter, href: 'https://twitter.com/', label: 'Twitter' },
   { icon: Github, href: 'https://github.com/', label: 'GitHub' },
 ];
 

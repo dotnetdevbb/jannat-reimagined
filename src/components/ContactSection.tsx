@@ -99,7 +99,7 @@ export const ContactSection = () => {
               <h3 className="text-2xl font-bold text-foreground mb-2">Usman Akram</h3>
               <p className="text-primary font-medium mb-6">.NET Full Stack Developer</p>
               <p className="text-muted-foreground mb-8">
-                I am available for freelance/Contract work. Connect with me and let's get start working on your next project.
+                I am available for freelance work. Connect with me via email or phone.
               </p>
 
               <div className="space-y-4 mb-8">
