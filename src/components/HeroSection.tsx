@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { ParticlesBackground } from './ParticlesBackground';
 
 const roles = [
   'Developer.',
@@ -51,22 +52,9 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-0"
     >
-      {/* Animated Background */}
+      {/* Particles Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card">
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-primary/50 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 6}s`,
-                animationDuration: `${6 + Math.random() * 6}s`,
-              }}
-            />
-          ))}
-        </div>
+        <ParticlesBackground />
       </div>
 
       <div className="relative z-10 text-center px-4">
