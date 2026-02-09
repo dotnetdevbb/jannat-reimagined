@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import contact from '@/assets/contact1.png';
 
 const contactInfo = [
   {
@@ -92,7 +93,7 @@ export const ContactSection = () => {
           <div>
             <div className="bg-card rounded-2xl p-8 mb-8">
               <img
-                src="https://jannat.dev/wp-content/uploads/2021/08/contact1.png"
+                src={contact}
                 alt="Usman Akram"
                 className="w-full h-64 object-cover rounded-xl mb-6"
               />

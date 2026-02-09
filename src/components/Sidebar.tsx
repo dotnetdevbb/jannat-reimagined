@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Linkedin, Github, Facebook, Twitter, Home, Briefcase, Award, Mail } from 'lucide-react';
-
+import logo from '@/assets/logo.png';
 const navItems = [
   { label: 'HOME', href: '#home', icon: Home },
   { label: 'WHAT I DO', href: '#services', icon: Briefcase },
@@ -71,14 +71,7 @@ export const Sidebar = () => {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 pt-16">
-          {/* Profile Image */}
-          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary mb-4">
-            <img
-              src="https://jannat.dev/wp-content/themes/inbio/assets/images/logo/logo.png"
-              alt="Usman Akram"
-              className="w-full h-full object-cover"
-            />
-          </div>
+         
 
           {/* Nav Items */}
           {navItems.map((item) => (
@@ -120,7 +113,7 @@ export const Sidebar = () => {
         <div className="flex flex-col items-center mb-10">
           <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-primary mb-6">
             <img
-              src="https://jannat.dev/wp-content/themes/inbio/assets/images/logo/logo.png"
+              src={logo}
               alt="Usman Akram"
               className="w-full h-full object-cover"
             />
